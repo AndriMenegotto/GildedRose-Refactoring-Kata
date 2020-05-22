@@ -35,16 +35,16 @@ class GildedRose {
             decreasesSellIn(item);
         }
         if (isSellInLessGreaterThanZero(item.sellIn)) {
-            if (!item.name.equals(AGED_BRIE)) {
-                if (!item.name.equals(BACKSTAGE_PASSES)) {
+            if(item.name.equals(AGED_BRIE)) {
+                incrementQualityWhenQualitiIsGreaterThanFifity(item);
+            } else {
+                if(item.name.equals(BACKSTAGE_PASSES)) {
+                    item.quality = resetQuality(item.quality);
+                } else {
                     if (isQualityGreaterThanZero(item.quality)) {
                         decreasesQualityWhenItemIsNotSulfurasHandOfRagnaros(item);
                     }
-                } else {
-                    item.quality = resetQuality(item.quality);
                 }
-            } else {
-                incrementQualityWhenQualitiIsGreaterThanFifity(item);
             }
         }
     }
